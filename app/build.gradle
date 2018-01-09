@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "27.0.2"
+    defaultConfig {
+        applicationId "partha.qbchatdemo"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    jcenter()
+    maven {
+        url "https://github.com/QuickBlox/quickblox-android-sdk-releases/raw/master/"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:recyclerview-v7:26.+'
+
+//    compile 'com.quickblox:quickblox-android-sdk-chat:2.6.1'
+//    compile 'com.quickblox:quickblox-android-sdk-content:2.6.1'
+    compile 'com.quickblox:quickblox-android-sdk-chat:3.4.1'
+    compile 'com.quickblox:quickblox-android-sdk-content:3.4.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    // Call
+    compile "com.quickblox:quickblox-android-sdk-videochat-webrtc:3.3.3"
+
+
+    // Bind using ButterKnife
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    //
+    compile 'com.android.support:multidex:1.0.1'
+}
